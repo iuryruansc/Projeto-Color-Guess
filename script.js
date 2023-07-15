@@ -1,4 +1,5 @@
 const circleLocation = document.querySelector('#colors');
+let score = 0;
 
 // função para criar os círculos 
 const createCircle = () => {
@@ -27,13 +28,29 @@ const guessColor = () => {
         const circle = event.target;
         if (circle.classList.contains('ball')) {
             if (document.querySelector('#rgb-color').innerHTML === circle.style.backgroundColor) {
-                document.querySelector('#answer').innerHTML = "Acertou!";
+                document.querySelector('#answer').innerHTML = "<strong>Acertou! Tente Novas Cores!</strong>";
+                score += 3;
             } else {
-                document.querySelector('#answer').innerHTML = "Errou! Tente novamente"
+                document.querySelector('#answer').innerHTML = "<strong>Errou! Tente novamente</strong>"
+                if (score <= 0) {
+                    score = 0
+                } else {
+                    score -= 3;
+                }
             }
         }
+        document.querySelector('#score').innerHTML = `Seu Placar: ${score}`;
     })
 }
+
+// função para resetar o jogo
+const resetGame = () => {
+    circleBGColor();
+    document.querySelector('#answer').innerHTML = '<strong>Escolha uma cor</strong>';
+}
+
+const buttonReset = document.querySelector('#reset-game');
+buttonReset.addEventListener('click', resetGame);
 
 window.onload = () => {
     guessColor();
