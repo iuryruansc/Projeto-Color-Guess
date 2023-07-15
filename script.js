@@ -1,4 +1,5 @@
 const circleLocation = document.querySelector('#colors');
+const allCircles = document.getElementsByClassName('ball');
 let score = 0;
 
 // função para criar os círculos 
@@ -12,7 +13,6 @@ const createCircle = () => {
 
 // função para atribuir cores
 const circleBGColor = () => {
-    const allCircles = document.getElementsByClassName('ball');
     var newArray = [];
     for (let index = 0; index < allCircles.length; index += 1) {
         const backgroundRGB = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
@@ -48,6 +48,28 @@ const resetGame = () => {
     circleBGColor();
     document.querySelector('#answer').innerHTML = '<strong>Escolha uma cor</strong>';
 }
+
+// função para aumentar a dificuldade
+const increaseDifficulty = () => {
+    const newCircle = document.createElement('div');
+    newCircle.classList.add('ball');
+    const backgroundRGB = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    newCircle.style.backgroundColor = backgroundRGB;
+    circleLocation.appendChild(newCircle);
+    circleBGColor();
+}
+
+// função para diminuir dificuldade
+const decreaseDifficulty = () => {
+    circleLocation.lastElementChild.remove();
+    circleBGColor();
+}
+
+const buttonRemove = document.querySelector('#remove');
+buttonRemove.addEventListener('click', decreaseDifficulty);
+
+const buttonIncrease = document.querySelector('#increase');
+buttonIncrease.addEventListener('click', increaseDifficulty);
 
 const buttonReset = document.querySelector('#reset-game');
 buttonReset.addEventListener('click', resetGame);
