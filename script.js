@@ -57,12 +57,14 @@ const increaseDifficulty = () => {
     newCircle.style.backgroundColor = backgroundRGB;
     circleLocation.appendChild(newCircle);
     circleBGColor();
+    document.querySelector('#answer').innerHTML = '<strong>Escolha uma cor</strong>';
 }
 
 // função para diminuir dificuldade
 const decreaseDifficulty = () => {
     circleLocation.lastElementChild.remove();
     circleBGColor();
+    document.querySelector('#answer').innerHTML = '<strong>Escolha uma cor</strong>';
 }
 
 const buttonRemove = document.querySelector('#remove');
