@@ -12,8 +12,6 @@
   <li>https://iuryruansc.github.io/Projeto-Color-Guess/</li>
 </ul>
 
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
-
 # Requisitos
 
 ## 1 - Adicione no seu site um título com o nome do seu jogo
